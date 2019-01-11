@@ -1,0 +1,37 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="root" extends="struts-default" namespace="/">
+
+		
+		<global-results>
+        	<result name="exception">/error.jsp</result>
+    	</global-results>
+
+    	<global-exception-mappings>
+        	<exception-mapping exception="java.lang.Exception" result="exception" />
+    	</global-exception-mappings>
+		
+		<action name="quizAction" class="quizAction">
+			<result name="quizpage">/quizhome.jsp</result>
+		</action>
+
+
+		<!-- <interceptor name="session" class="com.mjc.quizapp.action.SessionInterceptor" 
+			/> <interceptor-stack name="sessionExpirayStack"> <interceptor-ref name="defaultStack"/> 
+			<interceptor-ref name="session"/> </interceptor-stack> -->
+
+		<action name="evaluate" class="evaluate">
+			<!-- <interceptor-ref name="sessionExpirayStack" /> -->
+			<result name="results">/results.jsp</result>
+			<result name="session">sessionexpired.jsp</result>
+		</action>
+		
+		
+		
+	</package>
+	
+</struts>
